@@ -2,11 +2,13 @@
   import Sidebar from '$lib/components/Sidebar.svelte';
   import ConnectCard from '$lib/components/ConnectCard.svelte';
   import TitleBar from '$lib/components/TitleBar.svelte';
+  import ResizeHandles from '$lib/components/ResizeHandles.svelte';
 
   // Phase 1: always false — Phase 2 wires real auth state
   let isConnected = $state(false);
 </script>
 
+<ResizeHandles />
 <div class="root">
   <TitleBar />
   <div class="app-shell">
