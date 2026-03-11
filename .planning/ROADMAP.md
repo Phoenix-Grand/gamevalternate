@@ -30,7 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. The app window opens on Linux, Windows, and macOS displaying the Wails + Svelte 5 scaffold (no blank screen, no crash)
   3. On first launch, a SQLite database file is created with all required tables: server_profiles, games_cache, downloads, save_paths, app_settings
   4. The CI matrix uses CGo-enabled toolchains per target and macOS-native runners for darwin targets — no CGO_ENABLED=0 anywhere
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ### Phase 2: API Client + Authentication
 **Goal**: Users can connect to a GameVault server, verify it is reachable, and authenticate — with credentials stored securely in the OS keyring.
@@ -41,7 +45,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can register a new account on the connected server from within the app
   3. User can log in with username and password; subsequent app launches do not ask for credentials again (token persisted in OS keyring)
   4. User can log out, after which the app returns to the server connection screen and no credentials remain in the keyring
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ### Phase 3: Game Library + Core Loop
 **Goal**: Users can browse the server library, download a game with reliable resume support, and launch it — the complete end-to-end workflow of the app.
@@ -53,7 +61,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User can start a download and see real-time progress (bytes, speed, ETA); if the connection drops mid-download, resuming continues from the last byte offset without restarting
   4. User can pause, cancel, and restart a download; download integrity is verified via checksum after completion
   5. User can launch an installed game; the app detects when the game process exits and can uninstall a game and remove its files
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ### Phase 4: Account Management + Multi-Server
 **Goal**: Users can manage their account profile and maintain saved connections to multiple GameVault servers, with per-server state kept isolated.
@@ -64,7 +76,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can change their password and update their avatar and display name from within the app
   3. User can save multiple server connection profiles and switch between them; each server shows its own library and account state independently
   4. Multiple local OS users can each maintain separate GameVault profiles on the same machine install without credential or state bleed
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ### Phase 5: Plus Features
 **Goal**: Game sessions are tracked for playtime, and cloud saves automatically sync on game launch and exit — with a dirty flag ensuring no save data is silently overwritten after a crash or network loss.
@@ -76,7 +92,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. When a game exits, the app uploads local saves to the server; if upload fails, the dirty flag prevents any future auto-download from overwriting unsaved local changes
   4. User can configure the local save file path per game from the UI, and the setting persists across sessions
   5. User can manually trigger a cloud save sync at any time from the game detail or library view
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ### Phase 6: Docker + VNC Distribution
 **Goal**: Users who prefer a containerized or headless deployment can run the app in a browser-accessible Docker container with no X11 setup required on the host.
@@ -86,7 +106,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. A Docker image built on debian:bookworm-slim starts the app via Xvfb + x11vnc + noVNC + supervisord; the UI is accessible at http://localhost:8080 in any browser with no X11 on the host
   2. Setting the GAMEVAULT_SERVER_URL environment variable pre-populates the server URL on first launch so the user goes directly to the login screen
   3. The CI pipeline builds and publishes linux/amd64 and linux/arm64 Docker images to GHCR on every tagged release
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
 
 ## Progress
 
@@ -95,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. API Client + Authentication | 0/TBD | Not started | - |
 | 3. Game Library + Core Loop | 0/TBD | Not started | - |
 | 4. Account Management + Multi-Server | 0/TBD | Not started | - |
