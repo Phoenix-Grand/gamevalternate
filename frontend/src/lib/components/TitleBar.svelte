@@ -13,15 +13,15 @@
   </div>
   <div class="titlebar-controls">
     <button class="control" onclick={minimise} aria-label="Minimize">
-      <svg width="10" height="1" viewBox="0 0 10 1"><rect width="10" height="1" fill="currentColor"/></svg>
+      <svg width="12" height="2" viewBox="0 0 12 2"><rect width="12" height="2" fill="currentColor"/></svg>
     </button>
     <button class="control" onclick={toggleMaximise} aria-label="Maximize">
-      <svg width="10" height="10" viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor"/></svg>
+      <svg width="11" height="11" viewBox="0 0 11 11"><rect x="0.5" y="0.5" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
     </button>
     <button class="control close" onclick={quit} aria-label="Close">
-      <svg width="10" height="10" viewBox="0 0 10 10">
-        <line x1="0" y1="0" x2="10" y2="10" stroke="currentColor" stroke-width="1.2"/>
-        <line x1="10" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1.2"/>
+      <svg width="11" height="11" viewBox="0 0 11 11">
+        <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.4"/>
+        <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.4"/>
       </svg>
     </button>
   </div>
@@ -33,8 +33,7 @@
     align-items: center;
     justify-content: space-between;
     height: 32px;
-    background-color: var(--sidebar);
-    border-bottom: 1px solid var(--sidebar-border);
+    background-color: hsl(240 10% 12%);
     flex-shrink: 0;
     user-select: none;
   }
@@ -51,9 +50,9 @@
 
   .titlebar-title {
     font-size: 12px;
-    font-weight: 500;
-    color: var(--sidebar-foreground);
-    opacity: 0.7;
+    font-weight: 600;
+    color: hsl(0 0% 85%);
+    letter-spacing: 0.02em;
   }
 
   .titlebar-controls {
@@ -72,19 +71,17 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--sidebar-foreground);
-    opacity: 0.7;
-    transition: background-color 0.1s, opacity 0.1s;
+    color: hsl(0 0% 70%);
+    transition: background-color 0.1s, color 0.1s;
   }
 
   .control:hover {
-    background-color: var(--sidebar-accent);
-    opacity: 1;
+    background-color: hsl(240 5% 22%);
+    color: hsl(0 0% 95%);
   }
 
   .control.close:hover {
-    background-color: hsl(0 72.2% 50.6%);
+    background-color: hsl(0 72% 51%);
     color: white;
-    opacity: 1;
   }
 </style>
