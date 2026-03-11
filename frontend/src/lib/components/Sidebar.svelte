@@ -60,7 +60,7 @@
   .sidebar {
     width: 200px;
     min-width: 200px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
