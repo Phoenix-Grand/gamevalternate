@@ -26,14 +26,13 @@ func main() {
 		Height:    800,
 		MinWidth:  900,
 		MinHeight: 600,
-		Frameless: false,
+		Frameless: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
 		Windows: &windows.Options{
 			WebviewIsTransparent: false,
 			WindowIsTranslucent:  false,
-			DisableWindowIcon:    false,
 		},
 		OnStartup:  application.OnStartup,
 		OnShutdown: application.OnShutdown,
