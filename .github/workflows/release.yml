@@ -16,10 +16,12 @@ jobs:
       matrix:
         include:
           # linux/amd64 — native build on ubuntu-latest
+          # webkit2_41 tag required: Ubuntu 24.04 dropped webkit2gtk-4.0, only 4.1 available
           - os: ubuntu-latest
             platform: linux/amd64
             artifact: gamevault-go-linux-amd64
             packages: ""
+            wails_tags: webkit2_41
 
           # linux/arm64 — native arm64 runner (GitHub public preview Jan 2025)
           # NEVER use ubuntu-latest + aarch64-linux-gnu-gcc: Wails CGo cross-compile fails (issues #1921, #3719)
@@ -27,6 +29,7 @@ jobs:
             platform: linux/arm64
             artifact: gamevault-go-linux-arm64
             packages: ""
+            wails_tags: webkit2_41
 
           # windows/amd64 — cross-compile from Linux using mingw-w64
           - os: ubuntu-latest
@@ -34,17 +37,20 @@ jobs:
             artifact: gamevault-go-windows-amd64.exe
             cc: x86_64-w64-mingw32-gcc
             packages: gcc-mingw-w64-x86-64
+            wails_tags: ""
 
           # darwin/amd64 — MUST use native macOS runner (Apple SDK restriction)
           - os: macos-latest
             platform: darwin/amd64
             artifact: gamevault-go-darwin-amd64
+            wails_tags: ""
 
           # darwin/arm64 — MUST use native macOS runner (Apple SDK restriction)
           # macos-latest is M1 (arm64) hardware as of late 2024; can also target amd64
           - os: macos-latest
             platform: darwin/arm64
             artifact: gamevault-go-darwin-arm64
+            wails_tags: ""
 
     runs-on: ${{ matrix.os }}
 
@@ -86,7 +92,12 @@ jobs:
           CGO_ENABLED: "1"
           CC: ${{ matrix.cc || '' }}
         run: |
-          wails build -platform ${{ matrix.platform }} -o ${{ matrix.artifact }}
+          TAGS="${{ matrix.wails_tags }}"
+          if [ -n "$TAGS" ]; then
+            wails build -platform ${{ matrix.platform }} -o ${{ matrix.artifact }} -tags "$TAGS"
+          else
+            wails build -platform ${{ matrix.platform }} -o ${{ matrix.artifact }}
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
