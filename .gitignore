@@ -1,0 +1,25 @@
+# Wails build output
+build/bin/
+frontend/dist/
+frontend/node_modules/
+
+# Wails auto-generated JS/TS bindings — do NOT commit
+frontend/src/lib/wailsjs/
+wailsjs/
+
+# Go
+*.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
