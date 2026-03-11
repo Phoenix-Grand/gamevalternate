@@ -7,8 +7,8 @@
 
 ### Foundation
 
-- [x] **FOUND-01**: App builds as native binary for Linux (amd64/arm64), Windows (amd64), macOS (amd64/arm64) via GitHub Actions CI matrix
-- [x] **FOUND-02**: App window opens on Linux, Windows, and macOS using Wails v2 + Svelte 5 scaffold
+- [x] **FOUND-01**: App builds as native binary for Linux (amd64/arm64) and Windows (amd64) via GitHub Actions CI matrix
+- [x] **FOUND-02**: App window opens on Linux and Windows using Wails v2 + Svelte 5 scaffold
 - [x] **FOUND-03**: SQLite local state database initializes on first launch with schema for server_profiles, games_cache, downloads, save_paths, and app_settings
 - [ ] **FOUND-04**: Docker image runs the app in a VNC/noVNC container accessible via browser (no X11 required on host)
 - [ ] **FOUND-05**: User can set GAMEVAULT_SERVER_URL env var to pre-configure server on Docker first launch
@@ -90,7 +90,7 @@
 | Bundled backend server | Client-only; connects to user-hosted GameVault backend |
 | Mobile app | Desktop only for v1 |
 | Admin panel / server management | Backend ships its own web admin UI; client should not replicate it |
-| macOS Docker cross-compile | Apple SDK redistribution restrictions prevent Linux-based macOS cross-compilation; uses native CI runners instead |
+| macOS support | Dropped during Phase 1 verification — Wails CGo and webkit2gtk dependencies created CI complexity; Linux and Windows are the supported targets for v1 |
 | Automatic save path detection | Per-game paths are user-configured; auto-detection is out of scope for v1 |
 
 ## Traceability

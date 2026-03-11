@@ -2,7 +2,7 @@
 
 ## Overview
 
-Six phases that carry the project from a working build pipeline to a fully deployed, cross-platform game library client. The order is dictated by hard dependency: CI and build infrastructure must be correct before any feature code exists (CGo and macOS SDK constraints are expensive to discover late), authentication gates every API call, the core browse-download-launch loop is the minimum viable product, account management and multi-server support extend that foundation, Plus features (cloud saves, progress tracking) hook into the launch/exit lifecycle established in Phase 3, and Docker packaging wraps the complete binary at the end.
+Six phases that carry the project from a working build pipeline to a fully deployed, cross-platform game library client. The order is dictated by hard dependency: CI and build infrastructure must be correct before any feature code exists, authentication gates every API call, the core browse-download-launch loop is the minimum viable product, account management and multi-server support extend that foundation, Plus features (cloud saves, progress tracking) hook into the launch/exit lifecycle established in Phase 3, and Docker packaging wraps the complete binary at the end. Target platforms: Linux (amd64/arm64) and Windows (amd64); macOS support was dropped during Phase 1 verification.
 
 ## Phases
 
@@ -22,19 +22,19 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Phase Details
 
 ### Phase 1: Foundation
-**Goal**: The project compiles and ships binaries for all five targets; the Wails window boots; local state storage is initialized and ready for every service that follows.
+**Goal**: The project compiles and ships binaries for Linux and Windows; the Wails window boots; local state storage is initialized and ready for every service that follows.
 **Depends on**: Nothing (first phase)
 **Requirements**: FOUND-01, FOUND-02, FOUND-03
 **Success Criteria** (what must be TRUE):
-  1. GitHub Actions CI produces release artifacts for linux/amd64, linux/arm64, windows/amd64, darwin/amd64, and darwin/arm64 on every tagged commit
-  2. The app window opens on Linux, Windows, and macOS displaying the Wails + Svelte 5 scaffold (no blank screen, no crash)
+  1. GitHub Actions CI produces release artifacts for linux/amd64, linux/arm64, and windows/amd64 on every tagged commit
+  2. The app window opens on Linux and Windows displaying the Wails + Svelte 5 scaffold (no blank screen, no crash)
   3. On first launch, a SQLite database file is created with all required tables: server_profiles, games_cache, downloads, save_paths, app_settings
-  4. The CI matrix uses CGo-enabled toolchains per target and macOS-native runners for darwin targets — no CGO_ENABLED=0 anywhere
+  4. The CI matrix uses CGo-enabled toolchains per target — no CGO_ENABLED=0 anywhere
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
-- [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
+- [x] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets) + human verification checkpoint
 
 ### Phase 2: API Client + Authentication
 **Goal**: Users can connect to a GameVault server, verify it is reachable, and authenticate — with credentials stored securely in the OS keyring.
@@ -49,7 +49,7 @@ Plans:
 Plans:
 - [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
 - [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets: linux/amd64, linux/arm64, windows/amd64) + human verification checkpoint
 
 ### Phase 3: Game Library + Core Loop
 **Goal**: Users can browse the server library, download a game with reliable resume support, and launch it — the complete end-to-end workflow of the app.
@@ -65,7 +65,7 @@ Plans:
 Plans:
 - [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
 - [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets: linux/amd64, linux/arm64, windows/amd64) + human verification checkpoint
 
 ### Phase 4: Account Management + Multi-Server
 **Goal**: Users can manage their account profile and maintain saved connections to multiple GameVault servers, with per-server state kept isolated.
@@ -80,7 +80,7 @@ Plans:
 Plans:
 - [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
 - [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets: linux/amd64, linux/arm64, windows/amd64) + human verification checkpoint
 
 ### Phase 5: Plus Features
 **Goal**: Game sessions are tracked for playtime, and cloud saves automatically sync on game launch and exit — with a dirty flag ensuring no save data is silently overwritten after a crash or network loss.
@@ -96,7 +96,7 @@ Plans:
 Plans:
 - [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
 - [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets: linux/amd64, linux/arm64, windows/amd64) + human verification checkpoint
 
 ### Phase 6: Docker + VNC Distribution
 **Goal**: Users who prefer a containerized or headless deployment can run the app in a browser-accessible Docker container with no X11 setup required on the host.
@@ -110,7 +110,7 @@ Plans:
 Plans:
 - [ ] 01-01-PLAN.md — Wails project scaffold, Go module, App struct, SQLite store + unit tests
 - [ ] 01-02-PLAN.md — Svelte 5 app shell: sidebar navigation, connect card, server indicator
-- [ ] 01-03-PLAN.md — GitHub Actions CI matrix (5 targets) + human verification checkpoint
+- [x] 01-03-PLAN.md — GitHub Actions CI matrix (3 targets: linux/amd64, linux/arm64, windows/amd64) + human verification checkpoint
 
 ## Progress
 
