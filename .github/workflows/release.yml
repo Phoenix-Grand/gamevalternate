@@ -33,29 +33,12 @@ jobs:
             packages: ""
             wails_tags: webkit2_41
 
-          # windows/amd64 — cross-compile from Linux using mingw-w64
-          - os: ubuntu-latest
+          # windows/amd64 — native Windows runner avoids Linux→Windows CGo cross-compile issues
+          # GCC (mingw-w64) is pre-installed on windows-latest runners
+          - os: windows-latest
             platform: windows/amd64
             wails_output: gamevault-go-windows-amd64.exe
             artifact: gamevault-go-windows-amd64.exe
-            cc: x86_64-w64-mingw32-gcc
-            packages: gcc-mingw-w64-x86-64
-            wails_tags: ""
-
-          # darwin/amd64 — MUST use native macOS runner (Apple SDK restriction)
-          # Wails always produces a .app bundle on macOS; we zip it for distribution
-          - os: macos-latest
-            platform: darwin/amd64
-            wails_output: gamevault-go-darwin-amd64
-            artifact: gamevault-go-darwin-amd64.zip
-            wails_tags: ""
-
-          # darwin/arm64 — MUST use native macOS runner (Apple SDK restriction)
-          # macos-latest is M1 (arm64) hardware as of late 2024; can also target amd64
-          - os: macos-latest
-            platform: darwin/arm64
-            wails_output: gamevault-go-darwin-arm64
-            artifact: gamevault-go-darwin-arm64.zip
             wails_tags: ""
 
     runs-on: ${{ matrix.os }}
@@ -86,8 +69,6 @@ jobs:
           # Wails v2.9+ supports webkit2gtk-4.1 on Ubuntu 24.04+
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev ${{ matrix.packages }}
 
-      # macOS: WebKit is bundled with the macOS SDK — no additional packages needed
-
       - name: Install frontend dependencies
         run: |
           cd frontend
@@ -96,7 +77,6 @@ jobs:
       - name: Build
         env:
           CGO_ENABLED: "1"
-          CC: ${{ matrix.cc || '' }}
         run: |
           TAGS="${{ matrix.wails_tags }}"
           if [ -n "$TAGS" ]; then
@@ -104,12 +84,7 @@ jobs:
           else
             wails build -platform ${{ matrix.platform }} -o ${{ matrix.wails_output }}
           fi
-
-      - name: Package macOS artifact
-        if: startsWith(matrix.platform, 'darwin')
-        run: |
-          cd build/bin
-          zip -r "${{ matrix.artifact }}" "${{ matrix.wails_output }}.app"
+        shell: bash
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
