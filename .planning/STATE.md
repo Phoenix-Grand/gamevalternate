@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-foundation-01-PLAN.md
-last_updated: "2026-03-11T19:10:40.841Z"
+stopped_at: Completed 01-foundation-02-PLAN.md
+last_updated: "2026-03-11T19:18:52.979Z"
 last_activity: 2026-03-11 — Roadmap created; all 33 v1 requirements mapped across 6 phases
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 5 | 2 tasks | 37 files |
+| Phase 01-foundation P02 | 6 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: main.go at root (not cmd/): Go //go:embed cannot reference ../frontend/dist
 - [Phase 01-foundation]: glebarez/sqlite v1.11.0 used (not mattn/go-sqlite3): pure-Go, no CGo beyond Wails
 - [Phase 01-foundation]: go 1.22.0 in go.mod (not go 1.25): avoids toolchain download, matches Wails v2.9.3 minimum
+- [Phase 01-foundation]: CSS vars in shadcn-svelte template are full hsl() values — use var(--token) not hsl(var(--token)) in component styles
+- [Phase 01-foundation]: App.svelte (capital A) is the root component per main.ts import — not app.svelte
+- [Phase 01-foundation]: Node.js 22 required for Vite 7 builds — install via nvm in user space when system node is v18
 
 ### Pending Todos
 
@@ -79,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T19:10:40.838Z
-Stopped at: Completed 01-foundation-01-PLAN.md
+Last session: 2026-03-11T19:18:52.976Z
+Stopped at: Completed 01-foundation-02-PLAN.md
 Resume file: None
