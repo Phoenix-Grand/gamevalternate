@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-11T14:47:10.010Z"
+stopped_at: Completed 01-foundation-01-PLAN.md
+last_updated: "2026-03-11T19:10:40.841Z"
 last_activity: 2026-03-11 — Roadmap created; all 33 v1 requirements mapped across 6 phases
 progress:
   total_phases: 6
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 3
+  completed_plans: 1
   percent: 0
 ---
 
@@ -50,6 +50,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 01-foundation P01 | 5 | 2 tasks | 37 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Recent decisions affecting current work:
 - [Research]: macOS darwin targets require macOS-native GitHub Actions runners; Docker cross-compilation for macOS is not possible (Apple SDK restriction)
 - [Research]: Docker base image must be debian:bookworm-slim — Alpine is incompatible with WebKit2GTK (glibc required)
 - [Research]: Dirty flag and cloud save state machine must be designed before any sync code is written (Phase 5 pre-condition)
+- [Phase 01-foundation]: main.go at root (not cmd/): Go //go:embed cannot reference ../frontend/dist
+- [Phase 01-foundation]: glebarez/sqlite v1.11.0 used (not mattn/go-sqlite3): pure-Go, no CGo beyond Wails
+- [Phase 01-foundation]: go 1.22.0 in go.mod (not go 1.25): avoids toolchain download, matches Wails v2.9.3 minimum
 
 ### Pending Todos
 
@@ -75,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T14:47:10.008Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation/01-CONTEXT.md
+Last session: 2026-03-11T19:10:40.838Z
+Stopped at: Completed 01-foundation-01-PLAN.md
+Resume file: None
