@@ -12,7 +12,7 @@ Six phases that carry the project from a working build pipeline to a fully deplo
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Build pipeline, Wails scaffold, SQLite schema, and CI/CD matrix for all targets
+- [x] **Phase 1: Foundation** - Build pipeline, Wails scaffold, SQLite schema, and CI/CD matrix for all targets (completed 2026-03-11)
 - [ ] **Phase 2: API Client + Authentication** - Typed API client, login/register flow, JWT keyring storage, server health check
 - [ ] **Phase 3: Game Library + Core Loop** - Browse, search, filter, download with resume, install tracking, game launch
 - [ ] **Phase 4: Account Management + Multi-Server** - Profile view, password change, avatar, saved server profiles, multi-user local accounts
@@ -119,7 +119,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress|  |
+| 1. Foundation | 3/3 | Complete   | 2026-03-11 |
 | 2. API Client + Authentication | 0/TBD | Not started | - |
 | 3. Game Library + Core Loop | 0/TBD | Not started | - |
 | 4. Account Management + Multi-Server | 0/TBD | Not started | - |

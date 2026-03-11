@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Checkpoint: 01-foundation-03-PLAN.md Task 2 — awaiting human CI verification"
-last_updated: "2026-03-11T19:21:37.647Z"
+stopped_at: Completed 01-foundation-03-PLAN.md — Phase 1 foundation complete
+last_updated: "2026-03-11T22:05:37.657Z"
 last_activity: 2026-03-11 — Roadmap created; all 33 v1 requirements mapped across 6 phases
 progress:
   total_phases: 6
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-foundation P01 | 5 | 2 tasks | 37 files |
 | Phase 01-foundation P02 | 6 | 2 tasks | 5 files |
 | Phase 01-foundation P03 | 3 | 1 tasks | 1 files |
+| Phase 01-foundation P03 | 45 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: ubuntu-24.04-arm native runner for linux/arm64 — cross-compile from amd64 fails for Wails v2 CGo (issues #1921/#3719)
 - [Phase 01-foundation]: libwebkit2gtk-4.0-dev (not 4.1) in CI — avoids ABI mismatch on older runtime Linux
 - [Phase 01-foundation]: Pinned Wails CLI @v2.9.3 in CI — avoids breaking changes from @latest
+- [Phase 01-foundation]: macOS dropped from CI matrix: runner issues during verification; linux/windows cover primary user base
+- [Phase 01-foundation]: libwebkit2gtk-4.1-dev required on Ubuntu 24.04 Noble — 4.0-dev not available; webkit2_41 build tag required for Wails v2 CGo
+- [Phase 01-foundation]: Windows CI switched to native windows-latest runner — mingw-w64 cross-compile produced linking failures
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T19:21:25.494Z
-Stopped at: Checkpoint: 01-foundation-03-PLAN.md Task 2 — awaiting human CI verification
+Last session: 2026-03-11T22:05:37.654Z
+Stopped at: Completed 01-foundation-03-PLAN.md — Phase 1 foundation complete
 Resume file: None
