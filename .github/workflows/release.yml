@@ -70,9 +70,9 @@ jobs:
         if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update -q
-          # Install webkit2gtk-4.0 explicitly (not 4.1) for broader runtime compatibility
-          # Wails v2 targets webkit2gtk-4.0 as its primary supported version
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev ${{ matrix.packages }}
+          # Ubuntu 24.04 (noble) dropped libwebkit2gtk-4.0-dev; use 4.1 instead
+          # Wails v2.9+ supports webkit2gtk-4.1 on Ubuntu 24.04+
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev ${{ matrix.packages }}
 
       # macOS: WebKit is bundled with the macOS SDK — no additional packages needed
 
